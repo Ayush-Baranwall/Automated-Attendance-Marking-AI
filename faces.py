@@ -15,6 +15,7 @@ while(True):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # converts image to black and white 
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.5, minNeighbors=5) # uses opencv template detects frontal face then puts it in faces
     for (x, y, w, h) in faces:
+        # print(x, y, w, h)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = frame[y:y+h, x:x+w]
 
@@ -22,7 +23,7 @@ while(True):
 
         color = (100, 255, 100) # this is in BGR 
         stroke = 2
-        cv2.rectangle(frame, (x, y), (x+w, y+h), color, stroke)
+        cv2.rectangle(frame, (x, y), (x+w, y+h), color, stroke) # this draws a rectangle from x, y to x+w, y+h with color and stroke
 
     cv2.imshow('frame', frame) # this opens camera and show us
     if cv2.waitKey(20) & 0xFF == ord('q'):  # no idea why we use this but required to run 
