@@ -23,7 +23,7 @@ face_cascade = cv2.CascadeClassifier(f'{file_directory}\\cascades\\data\\haarcas
 # ↓ this takes pics ↓
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW) # cv2.VideoCapture(0)
 
-t_end = time.time() + 10
+t_end = time.time() + 50
 while True:
     ret, frame = cap.read() # taking images frame by frame
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # converts image to black and white 
@@ -36,7 +36,7 @@ while True:
 
         # using opencv train instead of scikit learn here ↓
         id, confidence = recognizer.predict(roi_gray) # confidence is the predicted label !!! still need to figure out how it works 
-        if  confidence < 200: # and confidence <= 85: 
+        if  confidence > 40: # and confidence <= 85: 
             font = cv2.FONT_HERSHEY_SIMPLEX
             name = labels[id]
             color = (0, 255, 0)
@@ -57,8 +57,8 @@ while True:
     if cv2.waitKey(20) & 0xFF == ord('q'):  # no idea why we use this but required to run 
         break
 
-face_file = f'{file_directory}\\{name}'
-shutil.copyfile(f'{file_directory}\\image.png', face_file)
+# face_file = f'{file_directory}\\{name}'
+# shutil.copyfile(f'{file_directory}\\image.png', face_file)
 
 cap.release()   # like free() in C
 cv2.destroyAllWindows() # closes all windows 
