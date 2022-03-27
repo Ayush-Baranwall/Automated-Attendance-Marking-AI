@@ -20,7 +20,6 @@ model = KNeighborsClassifier(n_neighbors=1)
 # model = svm.SVC()
 # model = Perceptron()
 
-
 # big explaination
 data = pd.read_csv('scikit_data.csv')
 data['image'] = data['image'].transform(lambda x: np.array(json.loads(x)))
