@@ -1,5 +1,0 @@
-"df = pd.DataFrame([name, image])\n",
-    "df = df.transpose()"
-    "df.columns = ['name', 'image']"
-    "df['image'] = df['image'].transform(lambda x: json.dumps(x.tolist()))"
-    "df.to_csv('scikit_data.csv', index=False, encoding='utf-8-sig')"
