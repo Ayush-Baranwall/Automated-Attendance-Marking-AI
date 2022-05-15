@@ -1,0 +1,1 @@
+Can't upload empty dir t0 git 
