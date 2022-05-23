@@ -1,3 +1,4 @@
+import time
 import cv2
 import pandas as pd
 import glob
@@ -13,7 +14,20 @@ from retinaface import RetinaFace # for detection
 
 print("imported files")
 
-image_path = f"{file_directory}\\test.jpeg"  # input image 
+camera = cv2.VideoCapture(0)
+while True:
+    ret, frame = camera.read() # taking images frame by frame
+    cv2.imwrite('image.png', frame)
+    cv2.imshow("Capturing", frame)  # this opens camera and show us
+    # time.sleep(10)
+    if cv2.waitKey(20) & 0xFF == ord('q'):
+        break
+
+camera.release()
+cv2.destroyAllWindows()
+del(camera)
+
+image_path = f"{file_directory}\\image.png"  # input image 
 faces = RetinaFace.detect_faces(image_path)  
 image = cv2.imread(image_path)
 

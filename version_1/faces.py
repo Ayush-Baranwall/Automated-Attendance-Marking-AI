@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 import os
-import shutil # used to move images to its dir
 import time # to run file for specific time 
 import pickle
 # ↑ above is all import files ↑
