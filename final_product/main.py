@@ -4,6 +4,7 @@ import pandas as pd
 import glob
 import os
 import cv2
+from datetime import datetime
 
 file_directory = os.path.dirname(os.path.abspath(__file__)) # gets us file's path 
 
@@ -66,7 +67,8 @@ for image_collected in data_collected:
             # marking attendance
             
 print("recognized faces and attendance marked")
-df.to_excel("attendance.xlsx", index=False) # saving them attendance 
+xlsx_name = datetime.today().strftime('%Y-%m-%d')
+df.to_excel(f"{xlsx_name}.xlsx", index=False) # saving them attendance 
 
 remove_dir = glob.glob(f"{file_directory}\\croped_images\\*")
 for f in remove_dir:
