@@ -40,7 +40,7 @@ You can install the required dependencies using pip:
 
 pip install opencv-python pandas deepface retinaface
 
-Installation
+## Installation
 
 To get started with the Face Recognition Attendance System, follow these steps:
 
